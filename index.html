@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パソコン修理・サポート | yasushi.jp</title>
+<meta name="description" content="パソコンが重い・動かない・設定がわからない。出張対応・相談無料。甲賀・湖南・信楽エリアのパソコン修理・サポート。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1a6fc4;
+    --blue-light: #e8f2fc;
+    --blue-dark: #0d4a8a;
+    --text: #222;
+    --text-muted: #555;
+    --border: #d4d4d4;
+    --bg: #fff;
+    --bg-soft: #f7f8fa;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  a { color: var(--blue); }
+
+  /* ヘッダー */
+  header {
+    background: var(--blue-dark);
+    color: #fff;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header .site-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  header .header-tel {
+    font-size: 14px;
+    color: #cde;
+  }
+
+  /* ヒーロー */
+  .hero {
+    background: linear-gradient(135deg, #0d4a8a 0%, #1a6fc4 100%);
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px 50px;
+  }
+  .hero h1 {
+    font-size: clamp(22px, 5vw, 36px);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+  .hero p {
+    font-size: clamp(15px, 2.5vw, 18px);
+    opacity: 0.92;
+    max-width: 560px;
+    margin: 0 auto 28px;
+  }
+  .hero-badges {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* セクション共通 */
+  section { padding: 56px 20px; }
+  section:nth-child(even) { background: var(--bg-soft); }
+  .section-title {
+    font-size: clamp(18px, 4vw, 26px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+    color: var(--blue-dark);
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 36px;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+
+  /* お悩みリスト */
+  .troubles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .trouble-item {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .trouble-icon {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .trouble-item p { font-size: 15px; font-weight: 500; }
+  .trouble-item span { font-size: 13px; color: var(--text-muted); }
+
+  /* 料金表 */
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .price-table th {
+    background: var(--blue-dark);
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+  }
+  .price-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .price-table tr:last-child td { border-bottom: none; }
+  .price-table tr:nth-child(odd) td { background: var(--bg-soft); }
+  .price-tag {
+    font-weight: 700;
+    color: var(--blue-dark);
+    white-space: nowrap;
+  }
+  .price-note { font-size: 12px; color: var(--text-muted); }
+  .price-free {
+    font-weight: 700;
+    color: #d44;
+    font-size: 16px;
+  }
+
+  /* 対応エリア */
+  .area-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .area-tag {
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    border-radius: 999px;
+    padding: 7px 18px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* 流れ */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .flow-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    position: relative;
+    padding-bottom: 24px;
+  }
+  .flow-item:last-child { padding-bottom: 0; }
+  .flow-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .flow-item:not(:last-child) .flow-num::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: calc(100% + 24px - 40px);
+    background: var(--border);
+    z-index: 0;
+  }
+  .flow-content { padding-top: 6px; }
+  .flow-content strong { font-size: 16px; display: block; margin-bottom: 4px; }
+  .flow-content p { font-size: 14px; color: var(--text-muted); }
+
+  /* お問い合わせ */
+  .contact-box {
+    background: var(--blue-dark);
+    color: #fff;
+    border-radius: 16px;
+    padding: 40px 28px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .contact-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .contact-box p { opacity: 0.88; font-size: 14px; margin-bottom: 24px; }
+  .contact-tel {
+    font-size: clamp(26px, 6vw, 36px);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .contact-tel-note { font-size: 12px; opacity: 0.7; margin-bottom: 24px; display: block; }
+  .contact-btn {
+    display: inline-block;
+    background: #fff;
+    color: var(--blue-dark);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 36px;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+
+  /* フッター */
+  footer {
+    background: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 12px;
+    line-height: 2;
+  }
+  footer a { color: #aaa; }
+
+  /* 強調帯 */
+  .highlight-bar {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 14px;
+    color: #5a4200;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="site-name">🖥 やすし パソコン修理</span>
+  <span class="header-tel">相談・診断 無料</span>
+</header>
+
+<div class="hero">
+  <h1>パソコンが重い・動かない・<br>設定がわからない</h1>
+  <p>信楽・甲賀・湖南エリアの出張パソコン修理・サポート。<br>ご年配の方も安心してご相談ください。</p>
+  <div class="hero-badges">
+    <span class="badge">📞 相談・診断 無料</span>
+    <span class="badge">🏠 出張対応あり</span>
+    <span class="badge">🔧 丁寧・わかりやすく説明</span>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">こんなお困りごとはありませんか？</h2>
+    <p class="section-sub">どんな小さなことでもお気軽にご相談ください</p>
+    <div class="troubles">
+      <div class="trouble-item">
+        <span class="trouble-icon">🐢</span>
+        <div><p>パソコンが重くて遅い</p><span>起動に10分以上かかる</span></div>
+      </div>
+      <div class="trouble-item">
+        <span class="trouble-icon">⚠️</span>
+        <div><p>画面が固まって動かない</p><span>突然フリーズしてしまう</span></div>
+      </div>
+      <div class="trouble-item">
+        <span class="trouble-icon">🦠</span>
+        <div><p>ウイルスが心配</p><span>変な広告が出てくる</span></div>
+      </div>
+      <div class="trouble-item">
+        <span class="trouble-icon">📧</span>
+        <div><p>メール・ネットの設定</p><span>新しいPCへの移行も</span></div>
+      </div>
+      <div class="trouble-item">
+        <span class="trouble-icon">🖨</span>
+        <div><p>プリンターが繋がらない</p><span>Wi-Fiの設定がわからない</span></div>
+      </div>
+      <div class="trouble-item">
+        <span class="trouble-icon">💾</span>
+        <div><p>大切なデータが消えた</p><span>写真・書類を取り出したい</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">料金のめやす</h2>
+    <p class="section-sub">部品代は別途実費・消費税込み・事前にお見積りします</p>
+    <div class="highlight-bar">💡 まずはお電話を！ 相談・診断は<strong>無料</strong>です。</div>
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th style="width:45%">作業内容</th>
+          <th style="width:30%">料金（目安）</th>
+          <th>備考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>相談・診断</td>
+          <td class="price-free">無 料</td>
+          <td><span class="price-note">お気軽にどうぞ</span></td>
+        </tr>
+        <tr>
+          <td>出張費</td>
+          <td class="price-tag">5,000円〜<br><span style="font-size:12px;font-weight:400">/ 1時間</span></td>
+          <td><span class="price-note">信楽・甲賀・湖南エリア</span></td>
+        </tr>
+        <tr>
+          <td>SSD換装（高速化）</td>
+          <td class="price-tag">15,000円〜</td>
+          <td><span class="price-note">部品代別・起動が劇的に速くなります</span></td>
+        </tr>
+        <tr>
+          <td>メモリ増設</td>
+          <td class="price-tag">5,000円〜</td>
+          <td><span class="price-note">部品代別</span></td>
+        </tr>
+        <tr>
+          <td>ウイルス除去</td>
+          <td class="price-tag">8,000円〜</td>
+          <td><span class="price-note">セキュリティ設定含む</span></td>
+        </tr>
+        <tr>
+          <td>Windows再インストール</td>
+          <td class="price-tag">12,000円〜</td>
+          <td><span class="price-note">データバックアップ別</span></td>
+        </tr>
+        <tr>
+          <td>データバックアップ</td>
+          <td class="price-tag">3,000円〜</td>
+          <td><span class="price-note">大切な写真・書類を安全に保存</span></td>
+        </tr>
+        <tr>
+          <td>初期設定・セットアップ</td>
+          <td class="price-tag">5,000円〜</td>
+          <td><span class="price-note">新PC・メール・プリンター設定など</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">ご依頼の流れ</h2>
+    <p class="section-sub">お電話一本でOKです</p>
+    <div class="flow">
+      <div class="flow-item">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <strong>お電話・メールでご相談（無料）</strong>
+          <p>症状をお聞きして、大まかな料金と作業内容をご案内します。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <strong>お見積り・日程のご確認</strong>
+          <p>ご納得いただいてから作業を進めます。押し売りは一切しません。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <strong>ご自宅へ出張 or お持ち込み</strong>
+          <p>出張対応・持ち込み対応どちらも可能です。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">4</div>
+        <div class="flow-content">
+          <strong>作業完了・わかりやすく説明</strong>
+          <p>何をしたか・今後の使い方もていねいにご説明します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">対応エリア</h2>
+    <p class="section-sub">下記エリア以外もお気軽にご相談ください</p>
+    <div class="area-list">
+      <span class="area-tag">信楽町</span>
+      <span class="area-tag">甲賀市</span>
+      <span class="area-tag">湖南市</span>
+      <span class="area-tag">草津市</span>
+      <span class="area-tag">栗東市</span>
+      <span class="area-tag">近江八幡市</span>
+      <span class="area-tag">その他ご相談ください</span>
+    </div>
+    <p style="text-align:center;font-size:13px;color:#777;">遠方の場合は出張費が変わる場合があります。事前にご確認ください。</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="contact-box">
+      <h3>まずはお気軽にご連絡ください</h3>
+      <p>相談・診断は無料です。どんな小さなことでもお聞きします。<br>お電話が一番つながりやすいです。</p>
+      <a class="contact-tel" href="tel:0000000000">000-0000-0000</a>
+      <span class="contact-tel-note">受付時間：10:00〜18:00（土日祝も対応）</span>
+      <a class="contact-btn" href="mailto:info@yasushi.jp">📧 メールでのお問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>やすし パソコン修理・サポート</p>
+  <p>運営：蓮月 | 滋賀県甲賀市信楽町</p>
+  <p><a href="mailto:info@yasushi.jp">info@yasushi.jp</a></p>
+  <p style="margin-top:8px;">© 2024 yasushi.jp All rights reserved.</p>
+</footer>
+
+</body>
+</html>
