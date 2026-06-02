@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>信楽パソコン訪問サポート | ご自宅でゆっくり相談できます</title>
   <meta name="description" content="滋賀県甲賀市信楽を中心に、ご自宅へ伺うパソコン相談・修理・見守りサポート。作業前に料金を説明し、無理な買い替えはすすめません。">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=78&fm=webp" imagesrcset="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=720&q=76&fm=webp 720w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=78&fm=webp 1200w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=78&fm=webp 1800w" imagesizes="100vw">
   <style>
     :root {
       --forest: #175b2d;
@@ -40,6 +42,7 @@
       font-size: 18px;
       line-height: 1.9;
       letter-spacing: 0;
+      overflow-x: hidden;
     }
 
     body.large-text {
@@ -98,12 +101,30 @@
       color: var(--forest-deep);
     }
 
+    .brand-short {
+      display: none;
+    }
+
     .brand-mark {
       width: 34px;
       height: 34px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--forest), var(--clay));
       box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.55);
+    }
+
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      margin-left: auto;
+      padding: 8px 14px;
+      color: var(--forest-deep);
+      background: var(--paper);
+      border: 2px solid var(--forest);
+      border-radius: 999px;
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      font-weight: 900;
+      cursor: pointer;
     }
 
     .nav {
@@ -119,6 +140,21 @@
     .nav a {
       text-decoration-thickness: 2px;
       text-underline-offset: 6px;
+    }
+
+    .nav a,
+    .text-size-button,
+    .small-call,
+    .button,
+    .mobile-call {
+      transition: transform 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease;
+    }
+
+    .nav a:hover,
+    .button:hover,
+    .small-call:hover,
+    .mobile-call:hover {
+      transform: translateY(-2px);
     }
 
     .text-size-button,
@@ -164,8 +200,8 @@
       inset: 0;
       z-index: -2;
       background:
-        linear-gradient(90deg, rgba(10, 43, 23, 0.88) 0%, rgba(10, 43, 23, 0.72) 42%, rgba(10, 43, 23, 0.24) 100%),
-        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=82") center / cover;
+        linear-gradient(90deg, rgba(10, 43, 23, 0.9) 0%, rgba(10, 43, 23, 0.72) 42%, rgba(10, 43, 23, 0.22) 100%),
+        radial-gradient(circle at 18% 20%, rgba(231, 182, 75, 0.22), transparent 34%);
     }
 
     .hero::after {
@@ -182,6 +218,26 @@
       width: 100%;
       margin: 0 auto;
       padding: 104px 24px 88px;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background: var(--forest-deep);
+    }
+
+    .hero-media picture,
+    .hero-media img,
+    .family-media picture,
+    .family-media img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-media img,
+    .family-media img {
+      object-fit: cover;
     }
 
     .local-label {
@@ -226,6 +282,8 @@
     }
 
     .button {
+      position: relative;
+      overflow: hidden;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -236,6 +294,20 @@
       font-weight: 900;
       font-size: 18px;
       border: 2px solid transparent;
+    }
+
+    .button::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.24) 42%, transparent 62%);
+      transform: translateX(-120%);
+      transition: transform 0.7s ease;
+    }
+
+    .button:hover::after,
+    .button:focus-visible::after {
+      transform: translateX(120%);
     }
 
     .button-primary {
@@ -259,6 +331,8 @@
 
     .section {
       padding: 80px 24px;
+      content-visibility: auto;
+      contain-intrinsic-size: 780px;
     }
 
     .section:nth-of-type(even) {
@@ -363,6 +437,12 @@
       border-radius: var(--radius);
       padding: 24px;
       box-shadow: 0 12px 30px rgba(23, 91, 45, 0.07);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 38px rgba(23, 91, 45, 0.12);
     }
 
     .card h3 {
@@ -426,6 +506,19 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 1.2s ease;
+    }
+
+    .photo-panel picture,
+    .small-photo picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .photo-panel:hover img,
+    .small-photo:hover img {
+      transform: scale(1.035);
     }
 
     .photo-caption {
@@ -457,6 +550,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 1.2s ease;
     }
 
     .fee-layout {
@@ -522,10 +616,25 @@
     }
 
     .family-band {
-      background:
-        linear-gradient(90deg, rgba(15, 61, 34, 0.88), rgba(15, 61, 34, 0.52)),
-        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1700&q=82") center / cover;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--forest-deep);
       color: white;
+    }
+
+    .family-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(15, 61, 34, 0.92), rgba(15, 61, 34, 0.58));
+    }
+
+    .family-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
     }
 
     .family-band h2,
@@ -673,6 +782,68 @@
       display: none;
     }
 
+    .motion-ready .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .motion-ready .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .motion-ready .hero-media img {
+      animation: heroDrift 16s ease-out both;
+    }
+
+    .motion-ready .hero .local-label,
+    .motion-ready .hero h1,
+    .motion-ready .hero .hero-lead,
+    .motion-ready .hero .hero-actions,
+    .motion-ready .hero .hero-note {
+      animation: heroRise 0.78s ease both;
+    }
+
+    .motion-ready .hero h1 {
+      animation-delay: 0.08s;
+    }
+
+    .motion-ready .hero .hero-lead {
+      animation-delay: 0.18s;
+    }
+
+    .motion-ready .hero .hero-actions {
+      animation-delay: 0.28s;
+    }
+
+    .motion-ready .hero .hero-note {
+      animation-delay: 0.38s;
+    }
+
+    @keyframes heroRise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heroDrift {
+      from {
+        transform: scale(1.045);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
     :focus-visible {
       outline: 4px solid var(--gold);
       outline-offset: 4px;
@@ -721,7 +892,7 @@
 
     @media (max-width: 640px) {
       .site-header {
-        position: static;
+        position: sticky;
       }
 
       .header-inner,
@@ -734,6 +905,52 @@
 
       .brand {
         min-width: auto;
+        flex: 1;
+        font-size: 16px;
+      }
+
+      .brand-full {
+        display: none;
+      }
+
+      .brand-short {
+        display: inline;
+      }
+
+      .brand-mark {
+        flex: 0 0 34px;
+      }
+
+      .menu-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        overflow: visible;
+        padding-top: 12px;
+      }
+
+      .nav.is-open {
+        display: flex;
+      }
+
+      .nav a,
+      .text-size-button {
+        width: 100%;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        text-decoration: none;
       }
 
       .small-call {
@@ -742,8 +959,31 @@
 
       .hero::before {
         background:
-          linear-gradient(180deg, rgba(10, 43, 23, 0.88) 0%, rgba(10, 43, 23, 0.7) 58%, rgba(10, 43, 23, 0.42) 100%),
-          url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=82") center / cover;
+          linear-gradient(180deg, rgba(10, 43, 23, 0.9) 0%, rgba(10, 43, 23, 0.72) 58%, rgba(10, 43, 23, 0.46) 100%),
+          radial-gradient(circle at 22% 16%, rgba(231, 182, 75, 0.2), transparent 36%);
+      }
+
+      .local-label {
+        align-items: flex-start;
+        border-radius: var(--radius);
+        font-size: 15px;
+      }
+
+      h1 {
+        font-size: clamp(34px, 11vw, 48px);
+      }
+
+      h2 {
+        font-size: clamp(28px, 8vw, 36px);
+      }
+
+      .hero-lead,
+      .lead {
+        font-size: 18px;
+      }
+
+      .hero-inner {
+        padding-bottom: 142px;
       }
 
       .hero-actions .button,
@@ -797,6 +1037,26 @@
         padding-bottom: 92px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      .motion-ready .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -806,9 +1066,11 @@
     <div class="header-inner">
       <a class="brand" href="#top" aria-label="信楽パソコン訪問サポート">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span>信楽パソコン訪問サポート</span>
+        <span class="brand-full">信楽パソコン訪問サポート</span>
+        <span class="brand-short">信楽パソコン相談</span>
       </a>
-      <nav class="nav" aria-label="ページ内の案内">
+      <button class="menu-button" type="button" id="menuButton" aria-expanded="false" aria-controls="mainNav">案内を開く</button>
+      <nav class="nav" id="mainNav" aria-label="ページ内の案内">
         <a href="#promise">お約束</a>
         <a href="#trouble">相談例</a>
         <a href="#voice">お客様の声</a>
@@ -822,6 +1084,12 @@
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <picture>
+          <source type="image/webp" srcset="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=720&q=76&fm=webp 720w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=78&fm=webp 1200w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=78&fm=webp 1800w" sizes="100vw">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=78" alt="" width="1800" height="1200" fetchpriority="high" decoding="async">
+        </picture>
+      </div>
       <div class="hero-inner">
         <p class="local-label">滋賀県甲賀市信楽から、ご自宅へ伺います</p>
         <h1 id="hero-title">パソコンの困りごと、分からないままで大丈夫です。</h1>
@@ -935,15 +1203,24 @@
         <p class="lead">公開前には、信楽の風景や実際の担当者写真へ差し替えると、さらに地域の安心感が出ます。</p>
         <div class="photo-grid">
           <figure class="photo-panel">
-            <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=1400&q=82" alt="机の上のパソコンを一緒に確認する様子の仮写真">
+            <picture>
+              <source type="image/webp" srcset="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=720&q=76&fm=webp 720w, https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=1100&q=78&fm=webp 1100w, https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=1400&q=78&fm=webp 1400w" sizes="(max-width: 900px) 100vw, 60vw">
+              <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=1100&q=78" alt="机の上のパソコンを一緒に確認する様子の仮写真" width="1400" height="934" loading="lazy" decoding="async">
+            </picture>
             <figcaption class="photo-caption">画面を一緒に見ながら、必要なところだけ説明します。</figcaption>
           </figure>
           <div class="side-photos">
             <figure class="small-photo">
-              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=900&q=82" alt="ノートとパソコンを置いた机の仮写真">
+              <picture>
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=420&q=74&fm=webp 420w, https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=720&q=76&fm=webp 720w, https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=900&q=78&fm=webp 900w" sizes="(max-width: 900px) 100vw, 40vw">
+                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=720&q=76" alt="ノートとパソコンを置いた机の仮写真" width="900" height="600" loading="lazy" decoding="async">
+              </picture>
             </figure>
             <figure class="small-photo">
-              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=82" alt="落ち着いた地域の風景の仮写真">
+              <picture>
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=420&q=74&fm=webp 420w, https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=720&q=76&fm=webp 720w, https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=78&fm=webp 900w" sizes="(max-width: 900px) 100vw, 40vw">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=720&q=76" alt="落ち着いた地域の風景の仮写真" width="900" height="600" loading="lazy" decoding="async">
+              </picture>
             </figure>
           </div>
         </div>
@@ -1024,6 +1301,12 @@
     </section>
 
     <section class="section family-band">
+      <div class="family-media" aria-hidden="true">
+        <picture>
+          <source type="image/webp" srcset="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=720&q=74&fm=webp 720w, https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=76&fm=webp 1200w, https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1700&q=78&fm=webp 1700w" sizes="100vw">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=76" alt="" width="1700" height="1133" loading="lazy" decoding="async">
+        </picture>
+      </div>
       <div class="section-inner">
         <p class="section-kicker">ご家族の方へ</p>
         <h2>離れて暮らす親御さんのパソコン相談も受け付けます</h2>
@@ -1116,12 +1399,47 @@
   </footer>
 
   <script>
+    document.body.classList.add("motion-ready");
+
+    const menuButton = document.getElementById("menuButton");
+    const mainNav = document.getElementById("mainNav");
     const button = document.getElementById("textSizeButton");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.textContent = isOpen ? "案内を閉じる" : "案内を開く";
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "案内を開く";
+      });
+    });
 
     button.addEventListener("click", () => {
       const isLarge = document.body.classList.toggle("large-text");
       button.textContent = isLarge ? "標準の文字に戻す" : "文字を大きく";
     });
+
+    const revealTargets = document.querySelectorAll(".section, .trust-item, .card, .fee-row, .flow-step, .family-point, .area-list li");
+    revealTargets.forEach((target, index) => {
+      target.classList.add("reveal");
+      target.style.setProperty("--delay", `${Math.min(index % 6, 5) * 70}ms`);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: "0px 0px -8% 0px" });
+
+    revealTargets.forEach((target) => observer.observe(target));
   </script>
 </body>
 </html>
